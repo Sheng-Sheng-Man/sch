@@ -1,0 +1,77 @@
+{
+
+    name: ["声声慢", ".ssm"]
+
+    comment: {startsWith: "！"}
+
+    colors: [
+
+        "variable" , #f5d751 ,#b09b3f
+
+    ]
+
+    contains: {
+
+        //字符串
+
+        {start: {match: /“/}
+
+        end: {match: /”/}
+
+        color: "string"
+
+        }
+
+        //内置匹配
+
+        {builtin: #PROGRAM_NUMBER#}
+
+        {builtin: #DOUBLE_QUOTED_STRING#}
+
+        //关键字
+
+        //{match: keywordsToRegex(
+
+        //        "定义一个函数 它是 他是 她是 就是 等于"
+
+        //    ), 0: "keyword"}
+
+        //变量定义
+
+        {match: /(我?想要|我?要?定义(?!一个函数|一个判断))(.*?)(，|；)/ , 1: "keyword",2:"variable"}
+
+        //变量定义赋值
+
+        {match: /([他她它]是|等于)(.*?)(，|；)/ , 1:"keyword",2:"variable"}
+
+        //运算
+
+        {match: /(加上|减去|乘以|除以|结果给)(.*?)(，|；)/, 1:"keyword",2:"variable"}
+
+        //变量赋值
+
+        {match: /(我?想?让)(.*?，|.*?；)/,1:"keyword",2:"variable"}
+
+        //函数调用
+
+        {match: /(使用|调用)(.*?)(，|；)/,1:"keyword",2:"number"}
+
+        {match: /(对着|为了|冲着)(.*?)，(.*?)(，|；)/,1:"keyword",2:"number",3:"variable"}
+
+        //函数定义
+
+        {match: /(定义一个函数)，叫做(.*?)：/,1:"keyword",2:"number"}
+
+        // xx 是 xx （函数传参）
+
+        {match: /(，)(.*?)是(.*?)(，|；)/ , 2:"variable",3:"number"}
+
+        // 条件判断
+
+        {match: /(定义一个判断|添加一个判断条件)(：)(.*?)；/,1:"keyword",3:"error"}
+
+        {match: /不?满足条?件?的话|判断结束。/,0:"error"}
+
+    }
+
+}
