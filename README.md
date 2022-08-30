@@ -4,7 +4,7 @@
   
   
 ## 已支持的编辑器
-* MT管理器（安卓）[Get](https://bbs.binmt.cc/forum-2-1.html)
+* [MT管理器](https://bbs.binmt.cc/forum-2-1.html)（安卓）[Get](https://github.com/Sheng-Sheng-Man/sch/tree/main/MT_Manager)
 
 ## 计划支持中的编辑器
 * Coming Soon
